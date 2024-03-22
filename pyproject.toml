@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "myrag"
+version = "0.1.0"
+description = ""
+authors = ["RyosukeDTomita <d310151c2@gmail.com>"]
+license = "unlicense"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.10.14"
+langchain-community = "0.0.27"
+langchain-core = "0.1.30"
+langchain-openai = "0.0.8"
+tiktoken = "0.6.0"
+docarray = "0.40.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
