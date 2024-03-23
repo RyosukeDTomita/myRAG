@@ -1,3 +1,4 @@
 .env
 .ipynb_checkpoints/
 .mypy_cache/
+input_data/*.pdf
