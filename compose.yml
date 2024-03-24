@@ -8,12 +8,12 @@ services:
     image: myrag:latest
     env_file: .env
     container_name: myrag-container
+    ports:
+      - 8000:8000 # localhostport:containerport
     volumes:
       - ./myrag/:/usr/local/app
-    # NOTE: tokenを空にするとVSCodeのJupyterのExtensionからkernel指定時にxsrfエラーが出る。raise HTTPError(403, "'_xsrf' argument missing from POST"
-    command: jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root  --NotebookApp.password=''
-    ports:
-      - "8888:8888" # localport:dockerport
+    command: chainlit run /usr/local/app/myrag/web_ui.py --host=0.0.0.0 --port=8000 -w
+
 
 
 

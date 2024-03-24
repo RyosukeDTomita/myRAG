@@ -1,7 +1,6 @@
 """
-プロンプトエンジニアリングでプロンプトの内容から回答してもらう。
+pdfファイルを読み込んで、質問に答えるRAG
 """
-import chunk
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableParallel, RunnablePassthrough
@@ -12,13 +11,18 @@ from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-# from langchain_community.vectorstores import DocArrayInMemorySearch
 
-# set_debug(True)
+set_debug(True)
 # set_verbose(True)
 
 
-def create_index_tools():
+def create_index_tools() -> Chroma:
+    """_summary_
+    vector storeを作って返す。
+
+    Returns:
+        Chroma: vector store(index)
+    """
     raw_documents = PyPDFLoader("./input_index/cloud_act.pdf").load()
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
     splits = text_splitter.split_documents(raw_documents)
@@ -26,9 +30,9 @@ def create_index_tools():
     return vectorstore
 
 
-def chat(message: str):
+def chat(message: str) -> str:
     """
-    プロンプトエンジニアリングでプロンプトの内容から回答してもらう。
+    vectore storeの内容を基に`message`に解答する。
     """
     template = """Answer the question based only on the following context:
     {context}
@@ -46,9 +50,11 @@ def chat(message: str):
     chain = setup_and_retrieval | prompt | model | output_parser
     result = chain.invoke(message)
     print(result)
+    return result
 
 
 def main():
+    # テスト用
     chat("What is US Cloud Act? Answer within 50 words in Japanese.")
 
 

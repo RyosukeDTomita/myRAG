@@ -11,3 +11,4 @@ EOF
 
 FROM depencencies AS app
 COPY . .
+EXPOSE 8000

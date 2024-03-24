@@ -1,4 +1,4 @@
-# 
+# pdf に対する質問に解答してくれる RAG を作る
 
 ![un license](https://img.shields.io/github/license/RyosukeDTomita/LangChainTest)
 
@@ -70,8 +70,18 @@ docker compose up
 
 ## ERROR LOG
 
+### chainlit のデフォルト port やホスト IP を変更したい(ブラウザからアクセスできなかった)
+
+- [Chainlit で LLM アプリを試す](https://zenn.dev/kun432/scraps/d312ecea15726d)を見ると，`chainlit run`の設定変更は引数でできるが，`chailit hello'は環境変数でしか切り替えできない。
+- また，`docker compose run`を使用してシェルから chailit を起動する際には compose.yml や Dockerfile の内容にかかわらず，port を開くオプションをつけないと port に対してコンテナ外からアクセス不可能なのて注意すること。
+
+### chainlit で受け取ったメッセージがうまく解釈できない
+
+- chainlit でユーザが送信したメッセージが chainlit.message.Message object なので.content を使って str に変換する必用がある。
+
 ---
 
-## REFERENCE
+## REFEREN
 
-- [Lang Chain のチュートリアル](https://python.langchain.com/docs/expression_language/get_started) をやってみるための環境構築をしました。
+- [Lang Chain のチュートリアル](https://python.langchain.com/docs/expression_language/get_started)
+- [pdf を使う RAG](https://qiita.com/hiroki_okuhata_int/items/7102bab7d96eb2574e7d)

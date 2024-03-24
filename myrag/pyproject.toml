@@ -17,6 +17,7 @@ docarray = "^0.40.0"
 chromadb = "^0.4.24"
 pypdf = "^4.1.0"
 redis = "^5.0.3"
+chainlit = "^1.0.401"
 
 
 
