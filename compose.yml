@@ -13,7 +13,3 @@ services:
     volumes:
       - ./myrag/:/usr/local/app
     command: chainlit run /usr/local/app/myrag/web_ui.py --host=0.0.0.0 --port=8000 -w
-
-
-
-

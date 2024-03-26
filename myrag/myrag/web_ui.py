@@ -14,6 +14,6 @@ async def on_chat_start():
 @cl.on_message
 async def on_message(input_message):
 
-    # NOTE: input_messageはhainlit.message.Message objectなので.contentでstrを取得できる。
+    # NOTE: input_messageはchainlit.message.Message objectなので.contentでstrを取得できる。
     result = chat(input_message.content)
     await cl.Message(content=result).send()

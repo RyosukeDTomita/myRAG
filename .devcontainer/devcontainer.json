@@ -1,0 +1,25 @@
+{
+  "name": "app",
+  "dockerComposeFile": "../compose.yml",
+  "service": "app",
+  "workspaceFolder": "/usr/local/app",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.autopep8",
+        "ms-python.python",
+        "ms -python.flake8"
+      ],
+      "settings": {
+        "flake8.args": ["--ignore=E111, E114, E402, E501"],
+        "autopep8.args": ["--ignore=E114, E402, E501"],
+        "[python]": {
+          "editor.formatOnType": true,
+          "editor.formatOnSave": true,
+          "editor.defaultFormatter": "ms-python.autopep8"
+        },
+        "autoDocstring.guessTypes": false
+      }
+    }
+  }
+}
