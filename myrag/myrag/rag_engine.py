@@ -13,7 +13,7 @@ from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 set_debug(True)
-# set_verbose(True)
+set_verbose(True)
 
 
 def create_index_tools() -> Chroma:
